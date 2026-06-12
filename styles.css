@@ -1,0 +1,405 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --barbie:   #f72585;
+  --rose:     #c4708a;
+  --rose-mid: #e8a5b3;
+  --blush:    #fce4ec;
+  --cream:    #fdf4f0;
+  --text:     #3d2535;
+  --muted:    #7a5560;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(155deg, #f72585 0%, #ff70b8 55%, #ffadd7 100%);
+  overflow: hidden;
+  text-align: center;
+  padding: 60px 20px;
+  gap: 16px;
+}
+
+.name {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(7rem, 20vw, 15rem);
+  color: #fff;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+  animation: name-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes name-glow {
+  from { text-shadow: 0 0 20px rgba(255,255,255,.5), 0 0 60px rgba(255,255,255,.2); }
+  to   { text-shadow: 0 0 40px rgba(255,255,255,.9), 0 0 100px rgba(255,255,255,.4), 0 0 160px rgba(255,174,215,.3); }
+}
+
+.tagline {
+  font-size: 1rem;
+  color: rgba(255,255,255,.85);
+  letter-spacing: .1em;
+  position: relative;
+  z-index: 1;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  font-size: .8rem;
+  color: rgba(255,255,255,.7);
+  letter-spacing: .14em;
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(7px); }
+}
+
+/* ── HERO SPARKLES ── */
+
+.sparkle-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  background: white;
+  opacity: 0;
+  clip-path: polygon(
+    50% 0%,   54% 46%,
+    100% 50%, 54% 54%,
+    50% 100%, 46% 54%,
+    0% 50%,   46% 46%
+  );
+  animation: twinkle 2.8s ease-in-out infinite;
+}
+
+.s1  { width: 14px; height: 14px; top: 36%; left: 22%; animation-delay: 0s;   }
+.s2  { width: 22px; height: 22px; top: 44%; left: 72%; animation-delay: .5s;  }
+.s3  { width:  8px; height:  8px; top: 55%; left: 15%; animation-delay: .9s;  }
+.s4  { width: 18px; height: 18px; top: 50%; left: 82%; animation-delay: 1.4s; }
+.s5  { width: 12px; height: 12px; top: 28%; left: 48%; animation-delay: .3s;  }
+.s6  { width: 10px; height: 10px; top: 65%; left: 60%; animation-delay: 1.9s; }
+.s7  { width: 20px; height: 20px; top: 32%; left: 62%; animation-delay: .7s;  }
+.s8  { width:  9px; height:  9px; top: 60%; left: 35%; animation-delay: 1.2s; }
+.s9  { width: 16px; height: 16px; top: 40%; left: 10%; animation-delay: 2.1s; }
+.s10 { width: 11px; height: 11px; top: 68%; left: 85%; animation-delay: 1.6s; }
+.s11 { width: 24px; height: 24px; top: 20%; left: 30%; animation-delay: .4s;  }
+.s12 { width:  7px; height:  7px; top: 75%; left: 50%; animation-delay: 2.4s; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0;   transform: scale(.4) rotate(0deg);  }
+  50%       { opacity: .95; transform: scale(1)   rotate(45deg); }
+}
+
+/* ── SHARED ── */
+
+section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 70px 24px;
+  text-align: center;
+}
+
+.section-label {
+  display: inline-block;
+  background: var(--blush);
+  color: var(--rose);
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 100px;
+  margin-bottom: 22px;
+}
+
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  color: var(--rose);
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--muted);
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.divider {
+  text-align: center;
+  color: var(--rose-mid);
+  font-size: 1rem;
+  letter-spacing: .8rem;
+  padding: 4px 0;
+}
+
+/* ── ABOUT ── */
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+.skill-pill {
+  background: linear-gradient(135deg, #fce4ec, #f8bbd9);
+  color: var(--text);
+  padding: 9px 20px;
+  border-radius: 100px;
+  font-size: .9rem;
+  font-weight: 500;
+  border: 1px solid rgba(196,112,138,.2);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  cursor: default;
+}
+
+.skill-pill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(196,112,138,.25);
+}
+
+/* ── INTERESTS — OVAL STAGE ── */
+
+/*
+  Ellipse center: (426, 310). Semi-axes: a=340 (h), b=195 (v). Image box: 110×165px.
+
+  θ=0°   Taylor  : center (426, 115) → left 371, top  30
+  θ=72°  Olivia  : center (749, 250) → left 694, top 165
+  θ=144° Maisie  : center (626, 468) → left 571, top 385
+  θ=216° Sabrina : center (226, 468) → left 171, top 385
+  θ=288° Gracie  : center (103, 250) → left  48, top 165
+
+  Text centered at y=292 (midpoint of top/bottom image centers: (115+468)/2).
+  That keeps 60+ px clearance above Maisie/Sabrina and 60+ px below Taylor — well
+  outside the 14 px sparkle reach.
+*/
+
+.interests {
+  padding-bottom: 40px;
+}
+
+.oval-stage {
+  position: relative;
+  width: 100%;
+  height: 660px;
+  margin-top: 20px;
+}
+
+.artists-wrap {
+  display: contents;
+}
+
+.interests-intro {
+  position: absolute;
+  top: 370px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 260px;
+  margin: 0;
+  font-size: .97rem;
+  text-align: center;
+  z-index: 2;
+}
+
+/* ── ARTIST CARDS ── */
+
+.artist-card {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.taylor-card  { left: 371px; top:  30px; transform: rotate(-3deg);  }
+.olivia-card  { left: 694px; top: 165px; transform: rotate(8deg);   }
+.maisie-card  { left: 571px; top: 385px; transform: rotate(-6deg);  }
+.sabrina-card { left: 171px; top: 385px; transform: rotate(7deg);   }
+.gracie-card  { left:  48px; top: 165px; transform: rotate(-9deg);  }
+
+.artist-card img {
+  width: 110px;
+  height: 165px;
+  object-fit: contain;
+  display: block;
+  transition: transform 300ms cubic-bezier(.34,1.56,.64,1), filter 300ms ease;
+  filter: drop-shadow(0 0 10px rgba(247,37,133,.35));
+}
+
+.artist-card:hover img {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 24px rgba(247,37,133,.75));
+}
+
+.artist-name {
+  font-size: .82rem;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: .04em;
+}
+
+/* ── CARD SPARKLES (barbie pink, on hover) ── */
+
+.cs {
+  position: absolute;
+  background: var(--barbie);
+  clip-path: polygon(
+    50% 0%,   54% 46%,
+    100% 50%, 54% 54%,
+    50% 100%, 46% 54%,
+    0% 50%,   46% 46%
+  );
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.cs1 { width: 14px; height: 14px; top: -14px;   left: 48px;   }
+.cs2 { width: 10px; height: 10px; top: 15%;      right: -14px; }
+.cs3 { width: 12px; height: 12px; bottom: 30%;   right: -14px; }
+.cs4 { width:  9px; height:  9px; bottom: -12px; left: 50px;   }
+.cs5 { width: 11px; height: 11px; bottom: 30%;   left: -14px;  }
+.cs6 { width: 10px; height: 10px; top: 15%;      left: -14px;  }
+
+.artist-card:hover .cs  { animation: card-twinkle 1.3s ease-in-out infinite; }
+.artist-card:hover .cs2 { animation-delay: .15s; }
+.artist-card:hover .cs3 { animation-delay: .35s; }
+.artist-card:hover .cs4 { animation-delay: .5s;  }
+.artist-card:hover .cs5 { animation-delay: .65s; }
+.artist-card:hover .cs6 { animation-delay: .25s; }
+
+@keyframes card-twinkle {
+  0%, 100% { opacity: 0; transform: scale(.3) rotate(0deg);   }
+  50%       { opacity: 1; transform: scale(1.2) rotate(45deg); }
+}
+
+/* ── CONTACT ── */
+
+.contact {
+  background: linear-gradient(150deg, var(--blush) 0%, var(--cream) 100%);
+  border-radius: 28px;
+  max-width: 860px;
+  margin: 50px auto 80px;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 34px;
+  flex-wrap: wrap;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.contact-btn:hover { transform: translateY(-4px); }
+
+.instagram {
+  background: linear-gradient(135deg, #f9a8d4, #e879a0, #c26eba);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(233,121,160,.35);
+}
+
+.instagram:hover { box-shadow: 0 8px 30px rgba(233,121,160,.5); }
+
+.twitter {
+  background: #111;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,.2);
+}
+
+.twitter:hover { box-shadow: 0 8px 28px rgba(0,0,0,.3); }
+
+/* ── FOOTER ── */
+
+footer {
+  text-align: center;
+  padding: 36px 20px;
+  color: var(--muted);
+  font-size: .85rem;
+  background: var(--blush);
+}
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 900px) {
+  .oval-stage {
+    position: static;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .artists-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .interests-intro {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .artist-card {
+    position: static;
+    transform: none !important;
+  }
+
+  .artist-card img {
+    width: 90px;
+    height: 136px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
